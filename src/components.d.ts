@@ -7,7 +7,16 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface BloomButton {
-        "name": string;
+        "callback_url": string;
+        "consumer_email": string;
+        "consumer_name": string;
+        "items": Array<{
+    amount: number;
+    description: string;
+    id: string;
+  }>;
+        "label": string;
+        "merchant": string;
     }
 }
 declare global {
@@ -23,7 +32,27 @@ declare global {
 }
 declare namespace LocalJSX {
     interface BloomButton {
-        "name"?: string;
+        "callback_url"?: string;
+        "consumer_email"?: string;
+        "consumer_name"?: string;
+        "items"?: Array<{
+    amount: number;
+    description: string;
+    id: string;
+  }>;
+        "label"?: string;
+        "merchant"?: string;
+        "onOncancel"?: (event: CustomEvent<{
+    status: number;
+  }>) => void;
+        "onOnerror"?: (event: CustomEvent<{
+    status: number;
+  }>) => void;
+        "onOnsuccess"?: (event: CustomEvent<{
+    status: number;
+    order: any;
+    payment: string;
+  }>) => void;
     }
     interface IntrinsicElements {
         "bloom-button": BloomButton;
