@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Stencil Component Starter</title>
+    <script type="module" src="/build/bloom-button.esm.js"></script>
+    <script nomodule src="/build/bloom-button.js"></script>
+  </head>
+  <body>
+    <bloom-button id="bloom-btn" label="Pay" merchant="jurassic-lake" consumer-name="Alex Fiorenza" />
+  </body>
+  <script>
+    document.querySelector('#bloom-btn').items = [
+      {
+        amount: 1200,
+        description: 'FullWeek Program 1/2',
+        id: 'FULLWEEK',
+      },
+    ];
+    document.addEventListener('onsuccess', status => {
+      console.log(status.detail);
+    });
+  </script>
+</html>
